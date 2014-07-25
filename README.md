@@ -1,13 +1,12 @@
 # Ruby + Gradle Example
 
-This project relies heavily on the marvelous [TorqueBox Rubygems Maven repo](hhttp://rubygems-proxy.torquebox.org/).
+This project relies heavily on the marvelous [TorqueBox Rubygems Maven repo](http://rubygems-proxy.torquebox.org/).
 
 
 ## Usage
 
 In order to prepare the dependencies for the JRuby application you must invoke
 gradle:
-
 
   % ./gradlew prepare
 
