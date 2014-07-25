@@ -1,7 +1,6 @@
 # Ruby + Gradle Example
 
-This project relies heavily on the marvellous [TorqueBox Rubygems Maven
-repo](hhttp://rubygems-proxy.torquebox.org/).
+This project relies heavily on the marvelous [TorqueBox Rubygems Maven repo](hhttp://rubygems-proxy.torquebox.org/).
 
 
 ## Usage
