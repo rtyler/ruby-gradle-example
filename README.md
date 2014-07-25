@@ -8,7 +8,9 @@ This project relies heavily on the marvelous [TorqueBox Rubygems Maven repo](htt
 In order to prepare the dependencies for the JRuby application you must invoke
 gradle:
 
-  % ./gradlew prepare
+```bash
+% ./gradlew prepare
+```
 
 This will do a few things:
 
