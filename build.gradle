@@ -1,0 +1,62 @@
+apply plugin: 'maven'
+apply plugin: 'java'
+
+repositories {
+  // Pull in Maven Central for all our non-ruby dependencies
+  mavenCentral()
+
+  maven {
+    // More details here: <http://rubygems-proxy.torquebox.org/>
+    url "http://rubygems-proxy.torquebox.org/releases"
+  }
+}
+
+dependencies {
+  runtime group: 'rubygems', name: 'sinatra', version: '1.4.5'
+  runtime group: 'rubygems', name: 'rake', version: '10.3.+'
+  runtime group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
+
+  // Needed otherwise we get `"Artifact 'com.sun.jdmk:jmxtools:1.2.1:jmxtools.jar' not found."`
+  runtime group: 'log4j', name: 'log4j', version: '1.2.+', transitive: true
+}
+
+def extractGem(File gem) {
+  def gemname = gem.getName().replaceAll(~".gem", "")
+  File extract_dir = new File("./vendor/gems/$gemname")
+
+  if (extract_dir.exists()) {
+    return
+  }
+
+  exec {
+    executable "gem"
+    args 'install', gem, '--install-dir=./vendor', '--no-ri', '--no-rdoc'
+  }
+}
+
+task cachegems(type: Copy) {
+    into ".gemcache"
+    from configurations.runtime
+    include '**/*.gem'
+}
+
+task cachejars(type: Copy) {
+    into ".jarcache"
+    from configurations.runtime
+    include '**/*.jar'
+}
+
+task preparegems {
+  dependsOn cachegems
+
+  doLast {
+    FileTree tree = fileTree(dir: '.gemcache/', include: "*.gem")
+    tree.each {File f -> extractGem(f) }
+  }
+}
+
+task prepare {
+  dependsOn cachejars, preparegems
+}
+
+// vim: et ts=2 sw=2 autoindent ft=groovy

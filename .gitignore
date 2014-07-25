@@ -2,3 +2,4 @@
 *.swp
 .gemcache/
 vendor/
+.jarcache
