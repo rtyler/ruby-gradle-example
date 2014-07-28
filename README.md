@@ -35,3 +35,9 @@ Which will do all of the above and also run the war [locally on port
 ```bash
 % PATH=./vendor/bin:$PATH GEM_HOME=./vendor rackup src/main/webapp/WEB-INF/config.ru
 ```
+
+## Requirements
+
+ * JRuby (for one form of local development)
+ * Rubygems (`gem`) for extracting gems
+ * Java 7
