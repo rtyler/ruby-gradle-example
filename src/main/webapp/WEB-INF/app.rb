@@ -9,7 +9,7 @@ if File.exists?(vendored_gems)
   ENV['GEM_HOME'] = vendored_gems
 end
 
-jar_cache = File.expand_path(File.dirname(__FILE__) + '/.jarcache/')
+jar_cache = File.expand_path(File.dirname(__FILE__) + '/../../../../.jarcache/')
 if File.exists?(jar_cache)
   Dir["#{jar_cache}/*.jar"].each { |j| require j }
 end
