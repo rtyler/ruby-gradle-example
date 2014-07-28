@@ -15,8 +15,8 @@ repositories {
 dependencies {
   runtime group: 'rubygems', name: 'sinatra', version: '1.4.5'
   runtime group: 'rubygems', name: 'rake', version: '10.3.+'
-  runtime group: 'rubygems', name: 'jruby-rack', version: '1.1.+'
 
+  runtime group: 'org.jruby.rack', name: 'jruby-rack', version: '1.1.+'
   runtime group: 'org.jruby', name: 'jruby-complete', version: '1.7.+'
   runtime group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
   // Needed otherwise we get `"Artifact 'com.sun.jdmk:jmxtools:1.2.1:jmxtools.jar' not found."`
