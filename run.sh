@@ -4,4 +4,4 @@
 export GEM_HOME=''
 export GEM_PATH=''
 
-exec ./gradlew prepare pkg
+exec ./gradlew prepare war

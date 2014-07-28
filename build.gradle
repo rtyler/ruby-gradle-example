@@ -1,5 +1,6 @@
 apply plugin: 'maven'
 apply plugin: 'java'
+apply plugin: 'war'
 
 repositories {
   // Pull in Maven Central for all our non-ruby dependencies
@@ -14,8 +15,10 @@ repositories {
 dependencies {
   runtime group: 'rubygems', name: 'sinatra', version: '1.4.5'
   runtime group: 'rubygems', name: 'rake', version: '10.3.+'
-  runtime group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
+  runtime group: 'rubygems', name: 'jruby-rack', version: '1.1.+'
 
+  runtime group: 'org.jruby', name: 'jruby-complete', version: '1.7.+'
+  runtime group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
   // Needed otherwise we get `"Artifact 'com.sun.jdmk:jmxtools:1.2.1:jmxtools.jar' not found."`
   runtime group: 'log4j', name: 'log4j', version: '1.2.+', transitive: true
 }
@@ -57,6 +60,20 @@ task preparegems {
 
 task prepare {
   dependsOn cachejars, preparegems
+}
+
+war {
+  dependsOn prepare
+  baseName 'rubygradle'
+  from "$buildDir/classes/main"
+  manifest { attributes 'Main-Class': 'WarMain' }
+
+  webInf {
+    from 'vendor/gems', 'vendor/specifications', 'vendor/bin'
+    into 'gems'
+  }
+
+  metaInf { from "init.rb" }
 }
 
 // vim: et ts=2 sw=2 autoindent ft=groovy

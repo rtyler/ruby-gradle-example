@@ -3,3 +3,4 @@
 .gemcache/
 vendor/
 .jarcache
+build/
