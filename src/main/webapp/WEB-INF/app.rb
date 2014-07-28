@@ -4,7 +4,10 @@ end
 
 # Hack our GEM_HOME to make sure that the `rubygems` support can find our
 # unpacked gems in ./vendor/
-ENV['GEM_HOME'] = File.expand_path(File.dirname(__FILE__) + '/vendor')
+vendored_gems = File.expand_path(File.dirname(__FILE__) + '/vendor')
+if File.exists?(vendored_gems)
+  ENV['GEM_HOME'] = vendored_gems
+end
 
 jar_cache = File.expand_path(File.dirname(__FILE__) + '/.jarcache/')
 if File.exists?(jar_cache)

@@ -69,7 +69,7 @@ war {
   manifest { attributes 'Main-Class': 'WarMain' }
 
   webInf {
-    from 'vendor/gems', 'vendor/specifications', 'vendor/bin'
+    from 'vendor'
     into 'gems'
   }
 
