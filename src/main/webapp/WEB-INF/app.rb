@@ -26,5 +26,5 @@ java_import 'kafka.producer.ProducerConfig'
 puts ">> Kafka code has been loaded"
 
 get '/' do
-  "Hello world! The time is: #{Time.now.utc}"
+  "Hello gradle world! The time is: #{Time.now.utc}"
 end
