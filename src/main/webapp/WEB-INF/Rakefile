@@ -1,0 +1,5 @@
+
+desc "Say hello to the world"
+task :hello do
+  puts "Hello there world, I'm a runnable war! (I think)"
+end
