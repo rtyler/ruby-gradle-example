@@ -6,18 +6,19 @@ apply plugin: 'jruby'
 
 buildscript {
     repositories {
-        mavenLocal()
+      maven {
+        url 'http://dl.bintray.com/rtyler/jruby'
+      }
     }
 
     dependencies {
-      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '1.0.7-SNAPSHOT'
+      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '1.0.11'
     }
 }
 
 repositories {
   // Pull in Maven Central for all our non-ruby dependencies
   mavenCentral()
-  mavenLocal()
 }
 
 dependencies {
