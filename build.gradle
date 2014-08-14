@@ -6,28 +6,27 @@ apply plugin: 'jruby'
 
 buildscript {
     repositories {
-      maven {
-        url 'http://dl.bintray.com/rtyler/jruby'
-      }
+      maven { url 'http://dl.bintray.com/rtyler/jruby' }
     }
 
     dependencies {
-      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '1.0.11'
+      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '1.1.+'
     }
 }
 
 repositories {
   // Pull in Maven Central for all our non-ruby dependencies
   mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
-  runtime group: 'rubygems', name: 'sinatra', version: '1.4.5'
-  runtime group: 'rubygems', name: 'rake', version: '10.3.+'
+  gems group: 'rubygems', name: 'sinatra', version: '1.4.5'
+  gems group: 'rubygems', name: 'rake', version: '10.3.+'
 
-  runtime group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
+  jrubyWar group: 'org.apache.kafka', name: 'kafka_2.9.2', version: '0.8.+'
   // Needed otherwise we get `"Artifact 'com.sun.jdmk:jmxtools:1.2.1:jmxtools.jar' not found."`
-  runtime group: 'log4j', name: 'log4j', version: '1.2.+', transitive: true
+  jrubyWar group: 'log4j', name: 'log4j', version: '1.2.+', transitive: true
 }
 
 // vim: et ts=2 sw=2 autoindent ft=groovy
