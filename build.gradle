@@ -1,16 +1,11 @@
 apply plugin: 'maven'
-apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'jetty'
-apply plugin: 'jruby'
+apply plugin: 'com.lookout.jruby'
 
 buildscript {
-    repositories {
-      maven { url 'http://dl.bintray.com/rtyler/jruby' }
-    }
-
+    repositories { jcenter() }
     dependencies {
-      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '1.1.+'
+      classpath group: 'com.lookout', name: 'jruby-gradle-plugin', version: '2.0.+'
     }
 }
 
@@ -29,4 +24,4 @@ dependencies {
   jrubyWar group: 'log4j', name: 'log4j', version: '1.2.+', transitive: true
 }
 
-// vim: et ts=2 sw=2 autoindent ft=groovy
+// vim: ft=groovy
